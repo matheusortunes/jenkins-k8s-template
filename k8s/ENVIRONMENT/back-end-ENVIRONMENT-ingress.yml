@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-back-end-ENVIRONMENT
+  namespace: YOUR-NAMESPACE
+spec:
+  rules:
+    - host: HOST.EXAMPLE.com.br 
+      http:
+        paths:
+          - path: / 
+            backend:
+              serviceName: service-back-end-ENVIRONMENT
+              servicePort: http 

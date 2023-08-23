@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-back-end-ENVIRONMENT
+  namespace: YOUR-NAMESPACE
+spec:
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    app: YOUR-APP-ENVIRONMENT
+  ports:
+    - name: http
+      port: 80 
+      protocol: TCP

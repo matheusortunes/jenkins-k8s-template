@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-back-end-ENVIRONMENT
+  namespace: $K8S_NAMESPACE
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: APP-back-end-ENVIRONMENT
+  template:
+    metadata:
+      labels:
+        app: APP-back-end-ENVIRONMENT
+    spec:
+      containers:
+        - image: $IMAGE
+          imagePullPolicy: IfNotPresent
+          name: APP-back-end-ENVIRONMENT
+          resources: { }
+          ports:
+            - name: http
+              containerPort: 3027 #trocar
+              protocol: TCP
+          env:
+            - name: DOTNET_ENVIRONMENT
+              value: Staging       
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      imagePullSecrets:
+      - name: YOUR-REGISTRY
